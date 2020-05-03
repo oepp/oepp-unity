@@ -30,8 +30,8 @@ public class SignController : MonoBehaviour
         AppManager.Instance.SetUserScene();
     }
 
-    public void OnNetworkConnectionError()
+    public void OnNetworkConnectionError(string message)
     {
-        nonUserUIController.ViewMessage("Network Connection Failed");
+        nonUserUIController.ViewMessage("Network " +message);
     }
 }

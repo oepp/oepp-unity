@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class HttpRequestController : MonoBehaviour
 {
@@ -24,8 +25,6 @@ public class HttpRequestController : MonoBehaviour
 
     IEnumerator SignInCoroutine(Account account)
     {
-        Debug.Log("Sign In Coroutine Started");
-
         WWWForm form = new WWWForm();
 
         form.AddField("username", account.username);
@@ -36,25 +35,20 @@ public class HttpRequestController : MonoBehaviour
 
         yield return wWW;
 
-        Debug.Log("Www result is" + wWW.text);
+        SignResponseData result = JsonUtility.FromJson<SignResponseData>(wWW.text);
 
-        Debug.Log("Sign Up Coroutine Stopped");
-
-        Debug.Log("www error is" +wWW.error);
-        if (wWW.)
+        if (result.status =="success")
         {
             FindObjectOfType<SignController>().OnSignInSuccesfull(account);
         }
         else
         {
-            FindObjectOfType<SignController>().OnNetworkConnectionError();
+            FindObjectOfType<SignController>().OnNetworkConnectionError(wWW.error);
         }
     }
 
     IEnumerator SignUpCoroutine(Account account)
     {
-        Debug.Log("Sign Up Coroutine Started");
-
         WWWForm form = new WWWForm();
 
         form.AddField("name", account.name);
@@ -72,15 +66,22 @@ public class HttpRequestController : MonoBehaviour
         yield return wWW;
 
         Debug.Log("result is" + wWW.text);
-        Debug.Log("Sign Up Coroutine Stopped");
-        Debug.Log("www error is" + wWW.error);
-        if (wWW.text == "0")
+
+        SignResponseData result = JsonUtility.FromJson<SignResponseData>(wWW.text);
+
+        if (result.status == "success")
         {
             FindObjectOfType<SignController>().OnSignInSuccesfull(account);
         }
         else
         {
-            FindObjectOfType<SignController>().OnNetworkConnectionError();
+            FindObjectOfType<SignController>().OnNetworkConnectionError(wWW.error);
         }
     }
+}
+[System.Serializable]
+class SignResponseData
+{
+    public string status;
+    public string message;
 }
