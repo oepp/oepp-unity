@@ -13,6 +13,11 @@ public class UserMainUI : MonoBehaviour
 
     public InputField searchedCoursedInputField;
 
+    private void Start()
+    {
+        RenderButtons();
+    }
+
     void RenderButtons()
     {
         coursesButton.onClick.AddListener(()=>OnCoursesButtonPressed());
