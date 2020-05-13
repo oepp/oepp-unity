@@ -12,7 +12,6 @@ public class HttpRequestController : MonoBehaviour
 
     private string popularGamesURL = "http://localhost:3001/infos/popular";
 
-
     public void SendSignUpRequest(Account account)
     {
         StartCoroutine(SignUpCoroutine(account));
@@ -66,8 +65,6 @@ public class HttpRequestController : MonoBehaviour
         form.AddField("confirmpassword", account.password);
 
         WWW www = new WWW(signUpURL, form);
-
-        //WWW wWW = new WWW(signUpURL, form);
 
         yield return www;
 
