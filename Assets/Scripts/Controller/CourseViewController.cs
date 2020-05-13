@@ -4,7 +4,29 @@ using UnityEngine;
 
 public class CourseViewController : MonoBehaviour
 {
-    public void SetCourseView(Course course)
+    public CourseData courseData;
+
+    public void SetCourseView(CourseData course)
+    {
+        this.courseData = course;
+    }
+
+    public void StartToCourse()
+    {
+        
+    }
+
+    public void SkipNextSubject()
+    {
+
+    }
+
+    public void ViewSubject()
+    {
+
+    }
+
+    public void ViewQuestion()
     {
 
     }

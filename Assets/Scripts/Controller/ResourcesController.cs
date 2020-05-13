@@ -5,8 +5,37 @@ using System.Linq;
 
 public class ResourcesController : MonoBehaviour
 {
-    public List<Course> GetAllCourses()
+    public List<CourseData> GetNonUserCourses()
     {
-        return Resources.LoadAll<Course>("").ToList();
+        TextAsset[] textAsset = Resources.LoadAll<TextAsset>("CourseDatas/");
+
+        List<CourseData> allCourses = new List<CourseData>();
+
+        Debug.Log("Txt asset "+textAsset.Length);
+
+        foreach (TextAsset text in textAsset)
+        {
+            CourseData courseData = JsonUtility.FromJson<CourseData>(text.text);
+
+            allCourses.Add(courseData);
+        }
+
+        return allCourses;
+    }
+
+    public List<CourseData> GetUserCourses()
+    {
+        TextAsset[] textAsset = Resources.LoadAll<TextAsset>("UserCourseDatas/");
+
+        List<CourseData> allCourses = new List<CourseData>();
+
+        foreach (TextAsset text in textAsset)
+        {
+            CourseData courseData = JsonUtility.FromJson<CourseData>(text.text);
+
+            allCourses.Add(courseData);
+        }
+
+        return allCourses;
     }
 }

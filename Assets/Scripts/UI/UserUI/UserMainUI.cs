@@ -13,9 +13,14 @@ public class UserMainUI : MonoBehaviour
 
     public InputField searchedCoursedInputField;
 
+    public Transform listViewParent;
+
+    public CourseSelectionButton courseSelectionButtonPrefab;
+
     private void Start()
     {
         RenderButtons();
+        SetCourseListView();  
     }
 
     void RenderButtons()
@@ -36,11 +41,45 @@ public class UserMainUI : MonoBehaviour
     {
         FindObjectOfType<UserUIController>().OpenCoursesScreen();
         FindObjectOfType<UserUIController>().CloseUserMainScreen();
-
     }
 
     private void OnExitAccountButtonPressed()
     {
         AppManager.Instance.ExitAccount();
+    }
+
+    public void SetCourseListView()
+    {
+        List<CourseData> allCourses = FindObjectOfType<CourseController>().nonUserCourseDatas;
+
+        if (allCourses != null)
+        {
+            ViewCoursesOnList(allCourses);
+        }
+        else
+        {
+            Debug.LogWarning("Courses not found");
+        }
+    }
+
+    private void ViewCoursesOnList(List<CourseData> courses)
+    {
+        courses.ForEach(delegate (CourseData course)
+        {
+            CourseSelectionButton courseSelectionButton = Instantiate(courseSelectionButtonPrefab);
+
+            courseSelectionButton.SetCourseSelectionButton(course);
+
+            courseSelectionButton.OnButtonClicked += OnCourseSelectionButtonClicked;
+
+            courseSelectionButton.transform.SetParent(listViewParent);
+        });
+    }
+
+    public void OnCourseSelectionButtonClicked(CourseData course)
+    {
+        FindObjectOfType<CourseViewController>().SetCourseView(course);
+        FindObjectOfType<UserUIController>().OpenCourseView();
+        FindObjectOfType<UserUIController>().CloseUserMainScreen();
     }
 }

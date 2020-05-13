@@ -31,4 +31,9 @@ public class Account
         this.username = username;
         this.password = password;
     }
+
+    public override string ToString()
+    {
+        return "Name =" + name + " Surname =" + surname + " Email=" + email + " Username = " + username + " Password = " + password;
+    }
 }

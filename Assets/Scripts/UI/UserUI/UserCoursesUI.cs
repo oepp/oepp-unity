@@ -13,7 +13,9 @@ public class UserCoursesUI : MonoBehaviour
 
     public void SetCourseListView()
     {
-        List<Course> allCourses = FindObjectOfType<ResourcesController>().GetAllCourses();
+        List<CourseData> allCourses = FindObjectOfType<CourseController>().nonUserCourseDatas;
+
+        Debug.Log("All Courses" +allCourses.Count);
 
         if (allCourses != null)
         {
@@ -25,9 +27,9 @@ public class UserCoursesUI : MonoBehaviour
         }
     }
 
-    private void ViewCoursesOnList(List<Course> courses)
+    private void ViewCoursesOnList(List<CourseData> courses)
     {
-        courses.ForEach(delegate (Course course)
+        courses.ForEach(delegate (CourseData course)
         {
             CourseSelectionButton courseSelectionButton = Instantiate(courseSelectionButtonPrefab);
 
@@ -39,7 +41,7 @@ public class UserCoursesUI : MonoBehaviour
         });
     }
 
-    public void OnCourseSelectionButtonClicked(Course course)
+    public void OnCourseSelectionButtonClicked(CourseData course)
     {
         FindObjectOfType<CourseViewController>().SetCourseView(course);
     }

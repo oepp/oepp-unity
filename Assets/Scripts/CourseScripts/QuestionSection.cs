@@ -5,9 +5,19 @@ using System;
 [Serializable]
 public class QuestionSection
 {
+    public QuestionSection(string subject,string question,string[] options,int correctOption)
+    {
+        this.subject = subject;
+        this.question = question;
+        this.options = options;
+        this.correctOption = correctOption;
+    }
+
+    public string subject;
+
     public string question;
 
-    public List<string> options;
+    public string[] options;
 
-    public string correctOption;
+    public int correctOption;
 }

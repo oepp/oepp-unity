@@ -1,0 +1,10 @@
+{"courseName":"Atatürk'ün Hayatı",
+"questionSections":[
+{"subject":"Atatürk Selenikte dogmuştur","question":"Atatürk selanikte %/ %/ de dogmuştur","options":["Selanik","İstabbul","İzmir"],"correctOption":0},
+{"subject":"Atatürk 1881 yılında dogmuştur","question":"Atatürk %/ %& yılında doğmuştur","options":["1900","1881","1978"],"correctOption":1},
+{"subject":"Atatürk annesinin adı Zübeyde 'dir","question":"Atatürk annesinin adı %/ %& 'dir","options":["Ayşe","Atiye","Zübeyde"],"correctOption":2},
+{"subject":"Atatürk babasının adı Ali Rıza'dir","question":"Atatürk babasının adı %/ %& 'dir","options":["Ali Rıza","Mustafa","Halil"],"correctOption":0},
+{"subject":"Atatürk Trablusgarp savaşına katılmıştır","question":"Atatürk %/ %& savaşına katılmıştır","options":["Trablusgarp","Talas","Viyana"],"correctOption":0},
+{"subject":"Atatürk TC ilk cumhurbaşkanıdır","question":"Atatürk TC ilk %/ %&","options":["Başbakanı","Genarali","Cumhurbaşkanı"],"correctOption":2},
+{"subject":"Atatürk 1938 yılında vefat etmiştir.","question":"Atatürk %/ %& yılında vefat etmiştir.","options":["1938","1945","1948"],"correctOption":0}
+]}

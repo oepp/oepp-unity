@@ -7,9 +7,16 @@ using UnityEngine.UI;
 
 public class CourseSelectionButton : MonoBehaviour,IPointerClickHandler
 {
-    public Course currentCourse { get; private set; }
+    public CourseData currentCourse { get; private set; }
 
-    public Action<Course> OnButtonClicked;
+    public Action<CourseData> OnButtonClicked;
+
+    public void SetCourseSelectionButton(CourseData courseData)
+    {
+        this.currentCourse = courseData;
+
+        AdapteView();
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -18,14 +25,7 @@ public class CourseSelectionButton : MonoBehaviour,IPointerClickHandler
             OnButtonClicked.Invoke(currentCourse);
         }
     }
-
-    public void SetCourseSelectionButton(Course course)
-    {
-        this.currentCourse = course;
-
-        AdapteView();
-    }
-
+ 
     void AdapteView()
     {
         GetComponentInChildren<Text>().text = currentCourse.courseName;
