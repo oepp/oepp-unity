@@ -57,7 +57,6 @@ public class QuestionScreen : MonoBehaviour
             yield return new WaitForSeconds(2f);
 
             questionBlogImage.color = standartColor;
-
         }
     }
 
