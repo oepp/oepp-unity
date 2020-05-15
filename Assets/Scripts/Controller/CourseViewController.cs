@@ -1,33 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class CourseViewController : MonoBehaviour
 {
-    public CourseData courseData;
+    public CoursePanel coursePanel;
 
     public void SetCourseView(CourseData course)
     {
-        this.courseData = course;
-    }
-
-    public void StartToCourse()
-    {
-        
-    }
-
-    public void SkipNextSubject()
-    {
-
-    }
-
-    public void ViewSubject()
-    {
-
-    }
-
-    public void ViewQuestion()
-    {
-
+        coursePanel.InitiliazeCoursePanel(course);
     }
 }

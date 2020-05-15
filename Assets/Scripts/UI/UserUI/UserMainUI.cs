@@ -46,6 +46,7 @@ public class UserMainUI : MonoBehaviour
     private void OnExitAccountButtonPressed()
     {
         AppManager.Instance.ExitAccount();
+        AppManager.Instance.SetNonUserScene();
     }
 
     public void SetCourseListView()

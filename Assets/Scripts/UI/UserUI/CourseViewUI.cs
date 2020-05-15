@@ -6,6 +6,15 @@ using UnityEngine.UI;
 public class CourseViewUI : MonoBehaviour
 {
     public Button exitButton;
+    
+    CourseViewController courseController;
+
+    private void Start()
+    {
+        courseController = FindObjectOfType<CourseViewController>();
+
+        RenderButtons();
+    }
 
     void RenderButtons()
     {
@@ -14,6 +23,7 @@ public class CourseViewUI : MonoBehaviour
 
     public void OnExitButtonPressed()
     {
-
+        FindObjectOfType<UserUIController>().OpenUserMainUI();
+        FindObjectOfType<UserUIController>().CloseCourseView();
     }
 }
